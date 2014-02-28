@@ -1,5 +1,6 @@
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Instagross</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <template name="layout">
@@ -7,7 +8,61 @@
     <p class="browser-warning"><strong><i class="icon-exclamation-sign"></i> Warning</strong> - You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to properly view this website.</p>
   <![endif]-->
 
-  {{yield 'header'}}
-  {{yield}}
-  {{yield 'footer'}}
+	<!--{{> header}}
+	<body>-->
+	{{> nav}}
+	{{> content}}
+	<!--</body>
+	{{> footer}}-->
+</template>
+
+<template name="nav">
+    <nav>
+        <span>Instagross</span>
+        <input id="searchTextField" type="text" size="60">
+
+        {{#constant}}
+            <span class="tip">Click on the map or use the search</span>
+            <ul class="pull-right" style="margin-right:5%; margin-top:3px; font-size: 18px">
+              {{loginButtons}}
+            </ul>
+        {{/constant}}
+    </nav>
+</template>
+
+<template name="content">
+    <div id="container">
+        {{> instagram}}
+        {{> map}}
+    </div>
+</template>
+
+<template name="instagram">
+    <div id="photos-container">
+        {{#each photoset}}
+        <div class="photodiv" >
+            <img class="photo" src="{{ images.low_resolution.url }}" alt="">
+            <a href="http://instagram.com/{{ user.username }}" target="_blank">
+                <span>
+                    <img class="profilePicture" src="{{user.profile_picture}}" />
+                    @{{ user.username }}
+                </span>
+                <br/>
+            </a>
+            <span class="caption">
+                {{#if caption}}
+                    <a href="{{link}}" target="_blank"><span>{{ caption.text }}<span></a>
+                {{^}}
+                    <a href="{{link}}" target="_blank"><span>No Comment...<span></a>
+                {{/if}}
+            </span>
+            
+        </div>
+        {{/each}}
+        <span id="zoomed-image"></span>
+	</div>	
+</template>
+
+<template name="map">
+  <div id="map_canvas"></div>
 </template>
