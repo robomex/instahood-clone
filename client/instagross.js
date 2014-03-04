@@ -2,10 +2,12 @@ var INSTAID = '';
 var markersArray = [];
 var instaArray = [];
 var ACCESSTOKEN = "";
+var map = L.mapbox.map('map', 'robomex.he6o03jb');
+
 
 Meteor.startup(function(){
 
-  //Get the users geolocation
+  /*//Get the users geolocation
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
   } else {
@@ -30,7 +32,7 @@ Meteor.startup(function(){
     placeClickMarker(latlng);
     addClickListener();
     addAutocomplete();
-  }
+  }*/
 
   //initialize state of zoomed image
   $('#zoomed-image').hide();
@@ -101,6 +103,8 @@ Template.content.events({
 
 //GOOGLE MAPS HELPERS
 
+//var map = L.map('map').setView([51.505, -0.09], 13);
+/*
 //Converts HTML5 geolocation data into a google maps location object
 var newLatLng = function (success) {
    return new google.maps.LatLng(success.coords.latitude, success.coords.longitude);
@@ -115,12 +119,12 @@ function createMap(latLng) {
     center: latLng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 
 /* The click listener watches for clicks on the map, extracts the Lat & Lng and calls
    getNewPhotos with the new latLng object. */
-function addClickListener() {
+/*function addClickListener() {
   google.maps.event.addListener(map, 'click', function(event){
     var currentPos = {lat: event.latLng.lat(), lng: event.latLng.lng(), dist: '1000'};
     placeClickMarker(event.latLng);
@@ -131,7 +135,7 @@ function addClickListener() {
 /* addAutocomplete uses the Google Maps API to create a search field, process the input to get
    the Lat & Lng for the selected location.  It passes the new latLng to getNewPhotos and 
    set map center and place new marker */
-function addAutocomplete() {
+/*function addAutocomplete() {
   var input = document.getElementById('searchTextField');
   autocomplete = new google.maps.places.Autocomplete(input);
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -198,7 +202,7 @@ function addInfoWindow(data, instaMarker, i){
     infowindow.open(map, this);
     instaArray.push(instaMarker);
   });
-}
+}*/
 
 // Ensures only one Instagram marker is open on the map at a time.
 
@@ -212,7 +216,7 @@ function deleteInstaMarkers() {
 }
 
 // Places a single red marker when the user clicks anywhere on the map.
-
+/*
 function placeClickMarker(location) {
   deleteOverlays();
   var marker = new google.maps.Marker({
@@ -220,7 +224,7 @@ function placeClickMarker(location) {
     map: map
   });
   markersArray.push(marker);
-}
+}*/
 
 // Ensures only one click marker is on the screen at a time, called by placeClickMarker
 
@@ -275,3 +279,6 @@ var getTwitter = function() {
     }
   }(document,"script","twitter-wjs");
 }
+
+
+
