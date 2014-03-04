@@ -1,9 +1,11 @@
 <head>
 	<title>Instagross</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 </head>
 
 <template name="layout">
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
   <!--[if lt IE 9]>
     <p class="browser-warning"><strong><i class="icon-exclamation-sign"></i> Warning</strong> - You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to properly view this website.</p>
   <![endif]-->
@@ -64,5 +66,6 @@
 </template>
 
 <template name="map">
-  <div id="map_canvas"></div>
+  <div id="map"></div>
+  
 </template>
